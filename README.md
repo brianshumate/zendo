@@ -24,11 +24,13 @@ npm install zendo -g
 Create a `~/.zendo-config.json` configuration file containing the following:
 
     {
+      "zd_name": "Stephie Andretti"
       "zd_email": "stephie@example.com",
       "zd_token": "XXXxxXXxXXXXxXxXxxxXXXxxXXXXxXXXX",
       "zd_uri": "https://example.zendesk.com/api/v2",
     }
 
+* *zd_name*  : Set to your full name
 * *zd_email* : Set to your Zendesk account email address
 * *zd_token* : Set to your Zendesk API token
 * *zd_uri*   : Set to your Zendesk API v2 URI
@@ -63,11 +65,13 @@ $EDITOR zendo-config.json
 Modify the values within it to match your setup:
 
     {
+      "zd_name": "Stephie Andretti"
       "zd_email": "stephie@example.com",
       "zd_token": "XXXxxXXxXXXXxXxXxxxXXXxxXXXXxXXXX",
       "zd_uri": "https://example.zendesk.com/api/v2",
     }
 
+* *zd_name*  : Set to your full name
 * *zd_email* : Set to your Zendesk account email address
 * *zd_token* : Set to your Zendesk API token
 * *zd_uri*   : Set to your Zendesk API v2 URI
