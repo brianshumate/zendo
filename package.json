@@ -1,0 +1,32 @@
+{
+  "name": "zendo",
+  "preferGlobal": true,
+  "version": "1.0.7",
+  "author": "Brian Shumate <brian@brianshumate.com>",
+  "description": "A minimal Zendesk agent ticket dashboard thing",
+  "contributors": [],
+  "bin": {
+    "zendo": "./bin/main.js"
+  },
+  "scripts": {},
+  "main": "",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "Zendesk",
+    "status"
+  ],
+  "dependencies": {
+    "ansi-color": "0.2.1",
+    "commander": "2.1.0",
+    "nconf": "^0.6.9",
+    "node-zendesk": "0.0.8"
+  },
+  "bundledDependencies": [],
+  "license": "Apache 2.0",
+  "engines": {
+    "node": ">=0.10"
+  }
+}

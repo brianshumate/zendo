@@ -1,0 +1,6 @@
+{
+  "zd_name": "Your Name"
+  "zd_email": "user@example.com",
+  "zd_token": "xxXXXxxxXXXXxxxxxxxXXXXxxxxXXXXxxxxx",
+  "zd_uri": "https://example.zendesk.com/api/v2"
+}
