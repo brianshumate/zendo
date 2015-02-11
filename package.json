@@ -1,7 +1,7 @@
 {
   "name": "zendo",
   "preferGlobal": true,
-  "version": "1.0.8",
+  "version": "1.0.9",
   "author": "Brian Shumate <brian@brianshumate.com>",
   "description": "A minimal Zendesk agent ticket dashboard thing",
   "contributors": [],

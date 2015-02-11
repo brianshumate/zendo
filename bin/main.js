@@ -77,7 +77,7 @@ client.search.query(searchQuery, function (err, req, result) {
 
         if (currentStatus === 'pending') {
             statusColor = 'green';
-        } 
+        }
         else if (currentStatus === 'open') {
             statusColor = 'yellow';
         }
