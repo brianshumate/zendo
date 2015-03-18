@@ -2,7 +2,7 @@
 
 // Dependencies
 var nconf = require('nconf')
-var color = require('ansi-color').set
+var chalk = require('chalk')
 var path = require('path')
 var program = require('commander')
 var zendesk = require('node-zendesk')
@@ -62,17 +62,17 @@ client.search.query(searchQuery, function (err, req, result) {
 
   var currentHealth = healthCheck()
 
-  console.log(color('## Ticket Status ' + currentHealth, 'white'))
-  console.log(color('## ' + nconf.get('zd_name') + ' has ' + result.length + ' unsolved tickets (' + openTickets + ' open' + ', ' + pendingTickets + ' pending):', 'white'))
+  console.log(chalk.white('## Ticket Status ' + currentHealth))
+  console.log(chalk.white('## ' + nconf.get('zd_name') + ' has ' + result.length + ' unsolved tickets (' + openTickets + ' open' + ', ' + pendingTickets + ' pending):'))
 
   // Check ticket status and set output color
   var ticketStatus = function (currentStatus) {
-  var statusColor = 'red'
+  var statusColor = chalk.red
 
   if (currentStatus === 'pending') {
-    statusColor = 'green'
+    statusColor = chalk.green
   } else if (currentStatus === 'open') {
-    statusColor = 'yellow'
+    statusColor = chalk.yellow
   }
   return statusColor
 }
@@ -88,6 +88,7 @@ client.search.query(searchQuery, function (err, req, result) {
       //       and added as an option
       orgId = org.organization()
     }
-    console.log(color(i + '. ' + id + ' | ' + orgId + ' | ' + subject, ticketStatus(status)))
+    var statusColor = ticketStatus(status)
+    console.log(statusColor(i + '. ' + id + ' | ' + orgId + ' | ' + subject))
   }
 })
