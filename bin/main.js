@@ -11,7 +11,7 @@ var configFile = path.join(process.env.HOME, '.zendo-config.json')
 nconf.argv().env()
 
 nconf.file({
-    file: configFile
+  file: configFile
 })
 
 // Configuration
@@ -22,9 +22,9 @@ var ticketHealth
 
 // Zendesk API connection
 var client = zendesk.createClient({
-    username: nconf.get('zd_email'),
-    token: nconf.get('zd_token'),
-    remoteUri: nconf.get('zd_uri')
+  username: nconf.get('zd_email'),
+  token: nconf.get('zd_token'),
+  remoteUri: nconf.get('zd_uri')
 })
 
 // Command line options
@@ -67,15 +67,15 @@ client.search.query(searchQuery, function (err, req, result) {
 
   // Check ticket status and set output color
   var ticketStatus = function (currentStatus) {
-  var statusColor = chalk.red
+    var statusColor = chalk.red
 
-  if (currentStatus === 'pending') {
-    statusColor = chalk.green
-  } else if (currentStatus === 'open') {
-    statusColor = chalk.yellow
+    if (currentStatus === 'pending') {
+      statusColor = chalk.green
+    } else if (currentStatus === 'open') {
+      statusColor = chalk.yellow
+    }
+    return statusColor
   }
-  return statusColor
-}
   for (var i = 0, max = result.length; i < max; i += 1) {
     var org
     var id = result[i].id
