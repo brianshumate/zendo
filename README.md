@@ -1,5 +1,7 @@
 # Zendo
 
+[![npm version](https://badge.fury.io/js/zendo.svg)](http://badge.fury.io/js/zendo)
+
 Zendo is a minimal command line utility that displays some basic ticket status
 information in the terminal for [Zendesk](http://www.zendesk.com/) agents.
 
