@@ -9,7 +9,7 @@ When properly configured, the default mode of operation uses the Zendesk API
 to fetch and display the following information in colorized Markdown format:
 
 * Ticket mood: Emoji indicating your current *ticket mood* based on the
-ratio of open vs. pending status tickets: 😞 😐 😄
+  ratio of open vs. pending status tickets: 😞 😐 😄
 * Total number of tickets
 * Total number of tickets in open status
 * Total number of tickets in pending status
@@ -22,6 +22,8 @@ Install the zendo module with `npm` like so:
 ```
 npm install zendo -g
 ```
+
+### Example Configuration File
 
 Create a `~/.zendo-config.json` configuration file containing the following:
 
@@ -37,53 +39,31 @@ Create a `~/.zendo-config.json` configuration file containing the following:
 * *zd_token* : Set to your Zendesk API token
 * *zd_uri*   : Set to your Zendesk API v2 URI
 
-
-Execute the `zendo` binary:
-
-```
-zendo
-```
-
 ## Setup (GitHub)
 
-If you cloned the GitHub project, then setup is done with the following
-steps instead.
-
-Change into the `zendo` repository directory and install its dependencies:
+To run with a git clone, perform these steps instead:
 
 ```
+git clone https://github.com/brianshumate/zendo.git
 cd zendo
 npm install
+npm link
 ```
 
 Copy `zendo-config.json-dist` to `zendo-config.json` and edit the
-values within it:
+values within it to match your setup based on the example and
+information in the **Example Configuration File** above:
 
 ```
 cp etc/zendo-config.json-dist ~/.zendo-config.json
 $EDITOR zendo-config.json
 ```
 
-Modify the values within it to match your setup:
-
-    {
-      "zd_name": "Stephie Andretti"
-      "zd_email": "stephie@example.com",
-      "zd_token": "XXXxxXXxXXXXxXxXxxxXXXxxXXXXxXXXX",
-      "zd_uri": "https://example.zendesk.com/api/v2",
-    }
-
-* *zd_name*  : Set to your full name
-* *zd_email* : Set to your Zendesk account email address
-* *zd_token* : Set to your Zendesk API token
-* *zd_uri*   : Set to your Zendesk API v2 URI
-
 ## Usage
 
-Quickly get up and running with `zendo` in a rather temporary manner:
+Run the executable:
 
 ```
-export PATH="$PATH:$(pwd)/bin"
 zendo
 ```
 

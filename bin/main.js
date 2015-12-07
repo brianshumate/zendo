@@ -9,7 +9,6 @@ var zendesk = require('node-zendesk')
 var configFile = path.join(process.env.HOME, '.zendo-config.json')
 
 nconf.argv().env()
-
 nconf.file({
   file: configFile
 })
@@ -19,14 +18,12 @@ var openTickets = 0
 var pendingTickets = 0
 var searchQuery = 'status<solved assignee:me'
 var ticketHealth
-
 // Zendesk API connection
 var client = zendesk.createClient({
   username: nconf.get('zd_email'),
   token: nconf.get('zd_token'),
   remoteUri: nconf.get('zd_uri')
 })
-
 // Command line options
 program
   .version(require('../package.json').version)
@@ -35,7 +32,7 @@ program
 
 client.search.query(searchQuery, function (err, req, result) {
   if (err) {
-    console.log(err)
+    console.error(err)
     return
   }
 
@@ -56,19 +53,16 @@ client.search.query(searchQuery, function (err, req, result) {
         ticketHealth = '😄'
       }
     }
-
     return ticketHealth
   }
-
   var currentHealth = healthCheck()
-
-  console.log(chalk.white('## Ticket Status ' + currentHealth))
-  console.log(chalk.white('## ' + nconf.get('zd_name') + ' has ' + result.length + ' unsolved tickets (' + openTickets + ' open' + ', ' + pendingTickets + ' pending):'))
-
+  console.log(chalk.white('## Ticket Status ' + currentHealth + '\n'))
+  console.log(chalk.white(nconf.get('zd_name') + ' has ' + result.length + ' unsolved tickets (' + openTickets + ' open' + ', ' + pendingTickets + ' pending):\n'))
+  console.log(chalk.white('| Ticket # | Customer ID | Description |'))
+  console.log(chalk.white('| -------- | ----------- | ----------- |'))
   // Check ticket status and set output color
   var ticketStatus = function (currentStatus) {
     var statusColor = chalk.red
-
     if (currentStatus === 'pending') {
       statusColor = chalk.green
     } else if (currentStatus === 'open') {
@@ -82,13 +76,11 @@ client.search.query(searchQuery, function (err, req, result) {
     var orgId = result[i].organization_id
     var subject = result[i].subject.substring(0, 50)
     var status = result[i].status
-
     if (program.organization) {
-      // TODO: this stub needs to be converted to actual org name
-      //       and added as an option
+      // TODO: convert this stub to actual org name and add as an option
       orgId = org.organization()
     }
     var statusColor = ticketStatus(status)
-    console.log(statusColor(i + '. ' + id + ' | ' + orgId + ' | ' + subject))
+    console.log(statusColor('|' + id + ' | ' + orgId + ' | ' + subject + ' |'))
   }
 })
