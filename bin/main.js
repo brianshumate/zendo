@@ -40,7 +40,7 @@ client.search.query(searchQuery, function (err, req, result) {
   var healthCheck = function () {
     for (var i = 0, max = result.length; i < max; i += 1) {
       var status = result[i].status
-      if (status === 'pending') {
+      if (status === 'pending' || status === 'hold') {
         pendingTickets += 1
       } else {
         openTickets += 1
